@@ -1,0 +1,18 @@
+spring:
+  application:
+    name: diyar
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: false
+    database: mysql
+    database-platform: org.hibernate.dialect.MySQL8Dialect
+  datasource:
+    url: jdbc:mysql://localhost:3306/springboottest?
+    username: root
+    password: root
+    driver-class-name: com.mysql.cj.jdbc.Driver
+server:
+  port: 8080
+jwt:
+  secret: f20ad77fdfdf021ae86eeb23285489d32c2c089367902b5f50de39ac3adbacca

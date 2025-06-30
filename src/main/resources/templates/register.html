@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Registration</title>
+        <link rel="stylesheet" href="css/register.css">
+    </head>
+<body class="theme-light">
+    <div class="theme-switcher">
+        <img src="images/light.png" id="light-theme" class="theme-icon" alt="Light theme">
+        <img src="images/dark.png" id="dark-theme" class="theme-icon" alt="Dark theme">
+    </div>
+
+    <div class="container">
+    <div class="form-section">
+    <div class="form-content">
+        <h1>Create your account</h1>
+        <p>Enter your details to regist</p>
+        <form id="register-form">
+        
+        <label>Name</label>
+        <input type="text" id="name" placeholder="Enter your name" maxlength="32" required />
+
+        <label>Email</label>
+        <input type="email" id="email" placeholder="Enter your email" maxlength="256" required />
+
+        <label>Password</label>
+        <input type="password" id="password" placeholder="Create a password" maxlength="256" required />
+
+        <label>Bio</label>
+        <textarea id="bio" placeholder="Tell us about yourself" maxlength="1024" rows="3"></textarea>
+
+        <label class="remember">
+            <input type="checkbox" id="terms" required /> 
+            I agree to the terms and conditions.<a href="/terms">Details</a>
+        </label>
+
+        <button type="submit" class="btn">Sign Up</button>
+
+        <div class="divider">or</div>
+
+        <button type="button" class="btn google" id="google-signup">
+            <img src="images/google.png" alt="Google" class="google-icon" /> Sign up with Google
+        </button>
+
+        <p class="footer">Already have an account? <a href="/login">Log in</a></p>
+
+        <div id="form-message" class="message"></div>
+        </form>
+    </div>
+    </div>
+    </div>
+
+    <script src="js/theme.js"></script>
+    <script src="js/register.js"></script>
+</body>
+</html>
