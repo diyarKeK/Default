@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="${post.title}">Post</title>
+</head>
+<body>
+    <h1 th:text="${post.title}">Post Title</h1>
+    <p th:text="${post.content}">Post Content</p>
+    <p>Likes: <span th:text="${post.likes.size()}"></span></p>
+</body>
+</html>

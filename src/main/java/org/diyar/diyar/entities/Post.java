@@ -1,8 +1,11 @@
 package org.diyar.diyar.entities;
 
 import jakarta.persistence.*;
+import org.springframework.web.filter.OncePerRequestFilter;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "posts")
@@ -15,11 +18,11 @@ public class Post {
     @Column(name = "title", nullable = false, length = 256)
     private String title;
 
-    @Column(name = "content", columnDefinition = "TEXT", nullable = false)
+    @Column(name = "content", columnDefinition = "TEXT", length = 1024, nullable = false)
     private String content;
 
-    @Column(name = "likes", nullable = false)
-    private int likes = 0;
+    @OneToMany(mappedBy = "post", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Like> likes = new ArrayList<>();
 
     @Column(name = "views", nullable = false)
     private int views = 0;
@@ -33,7 +36,7 @@ public class Post {
 
     public Post() {}
 
-    public Post(User author, LocalDateTime uploaded_at, int views, int likes, String title, String content) {
+    public Post(User author, LocalDateTime uploaded_at, int views, List<Like> likes, String title, String content) {
         this.author = author;
         this.uploaded_at = uploaded_at;
         this.views = views;
@@ -45,7 +48,7 @@ public class Post {
     public void setId(Long id) { this.id = id; }
     public void setTitle(String title) { this.title = title; }
     public void setContent(String content) { this.content = content; }
-    public void setLikes(int likes) { this.likes = likes; }
+    public void setLikes(List<Like> likes) { this.likes = likes; }
     public void setViews(int views) { this.views = views; }
     public void setUploaded_at(LocalDateTime uploaded_at) { this.uploaded_at = uploaded_at; }
     public void setAuthor(User author) { this.author = author; }
@@ -53,8 +56,10 @@ public class Post {
     public Long getId() { return id; }
     public String getTitle() { return title; }
     public String getContent() { return content; }
-    public int getLikes() { return likes; }
+    public List<Like> getLikes() { return likes; }
     public int getViews() { return views; }
     public LocalDateTime getUploaded_at() { return uploaded_at; }
     public User getAuthor() { return author; }
+
+    public int getLikesCount() { return likes.size(); }
 }
