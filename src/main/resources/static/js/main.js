@@ -32,6 +32,33 @@ document.addEventListener('DOMContentLoaded', async () => {
     })
 
   } catch (err) {
+    console.log(err.message)
+  }
+})
 
+document.getElementById('post').addEventListener('submit', async () => {
+  try {
+    const title = document.getElementById('title').value.trim()
+    const content = document.getElementById('content').value.trim()
+    
+    const data = {title, content}
+
+    const response = await fetch('/api/posts', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(data),
+      credentials: 'include'
+    })
+
+    if (!response.ok) {
+      const errMsg = await response.text()
+      alert(errMsg)
+    }
+
+    alert('Success')
+  } catch (err) {
+    console.log(err.message)
   }
 })

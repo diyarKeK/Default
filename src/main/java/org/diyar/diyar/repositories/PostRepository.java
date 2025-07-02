@@ -20,5 +20,5 @@ public interface PostRepository extends JpaRepository<Post, Long> {
     @Query("SELECT p FROM Post p ORDER BY p.views DESC")
     Page<Post> findAllByPopularity(Pageable pageable);
 
-    Optional<Post> findByUser(User user);
+    Optional<Post> findByAuthor(User author);
 }
