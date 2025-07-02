@@ -1,0 +1,99 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body, html {
+    height: 100%;
+    overflow: auto;
+    font-family: 'Segoe UI', sans-serif;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+body.theme-light {
+  background-color: white;
+  color: #111827;
+}
+body.theme-dark {
+    background-color: #1f2937;
+    color: #f9fafb;
+}
+
+.theme-switcher {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.theme-icon {
+    width: 36px;
+    height: 36px;
+    cursor: pointer;
+    border-radius: 18px;
+    transition: ease 0.3s;
+}
+
+.theme-icon:hover {
+  transform: translateY(-2px);
+}
+
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+#Content-Form {
+    width: 100%;
+    max-width: 600px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 35px;
+    gap: 20px;
+    border-radius: 12px;
+    position: relative;
+}
+
+body.theme-light #Content-Form {
+    background: white;
+    border: 2px solid #777;
+}
+body.theme-dark #Content-Form {
+    background: #1f2a3b;
+    border: 2px solid #ccc;
+}
+
+#content {
+    line-height: 1.6;
+    word-break: break-word;
+}
+
+.bar {
+    width: 100%;
+    display: flex;
+    justify-content: end;
+    flex-direction: row;
+    gap: 20px;
+}
+
+.bar div {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.bar div img {
+    width: 32px;
+    height: 32px;
+    margin-bottom: 5px;
+    cursor: pointer;
+    transition: ease 0.3s;
+}
+.bar div img:hover {
+    transform: scale(1.06);
+}
