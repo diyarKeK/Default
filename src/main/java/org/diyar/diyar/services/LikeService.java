@@ -15,11 +15,11 @@ public class LikeService {
         this.likeRepository = likeRepository;
     }
 
-    public void likePost(Like like) {
-        likeRepository.save(like);
+    public Like likePost(Like like) {
+        return likeRepository.save(like);
     }
 
-    public boolean isLikeExistsByUserAndPost(User user, Post post) {
-        return likeRepository.existsByUserAndPost(user, post);
+    public boolean isLikeExistsByAuthorAndPost(User author, Post post) {
+        return likeRepository.existsByAuthorAndPost(author, post);
     }
 }

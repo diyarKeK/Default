@@ -24,6 +24,9 @@ public class Post {
     @OneToMany(mappedBy = "post", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Like> likes = new ArrayList<>();
 
+    @OneToMany(mappedBy = "post", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Comment> comments = new ArrayList<>();
+
     @Column(name = "views", nullable = false)
     private int views = 0;
 
@@ -36,11 +39,12 @@ public class Post {
 
     public Post() {}
 
-    public Post(User author, LocalDateTime uploaded_at, int views, List<Like> likes, String title, String content) {
+    public Post(User author, LocalDateTime uploaded_at, int views, List<Like> likes, List<Comment> comments, String title, String content) {
         this.author = author;
         this.uploaded_at = uploaded_at;
         this.views = views;
         this.likes = likes;
+        this.comments = comments;
         this.title = title;
         this.content = content;
     }
@@ -49,6 +53,7 @@ public class Post {
     public void setTitle(String title) { this.title = title; }
     public void setContent(String content) { this.content = content; }
     public void setLikes(List<Like> likes) { this.likes = likes; }
+    public void setComments(List<Comment> comments) { this.comments = comments; }
     public void setViews(int views) { this.views = views; }
     public void setUploaded_at(LocalDateTime uploaded_at) { this.uploaded_at = uploaded_at; }
     public void setAuthor(User author) { this.author = author; }
@@ -57,9 +62,8 @@ public class Post {
     public String getTitle() { return title; }
     public String getContent() { return content; }
     public List<Like> getLikes() { return likes; }
+    public List<Comment> getComments() { return comments; }
     public int getViews() { return views; }
     public LocalDateTime getUploaded_at() { return uploaded_at; }
     public User getAuthor() { return author; }
-
-    public int getLikesCount() { return likes.size(); }
 }

@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <title th:text="${post.title}">Post</title>
-    <link rel="stylesheet" href="css/post.css">
+    <link rel="stylesheet" href="/css/post.css">
 </head>
 <body class="theme-light">
     <div class="theme-switcher">
-        <img src="images/light.png" id="light-theme" class="theme-icon" alt="Light theme">
-        <img src="images/dark.png" id="dark-theme" class="theme-icon" alt="Dark theme">
+        <img src="/images/light.png" id="light-theme" class="theme-icon" alt="Light theme">
+        <img src="/images/dark.png" id="dark-theme" class="theme-icon" alt="Dark theme">
     </div>
 
 <div class="container">
@@ -21,24 +21,24 @@
 
         <div class="bar">
             <div>
-            <img id="like" src="images/like-light.png" alt="Like"/>
+            <img id="like" src="/images/like-light.png" alt="Like"/>
             <span id="likes-quantity" th:text="${post.likes.size()}">0</span>
             </div>
 
-            <div>
-            <img id="comment" src="images/comment-light.png" alt="Comment"/>
+            <!--<div>
+            <img id="comment" src="/images/comment-light.png" alt="Comment"/>
             <span id="comments-quantity" th:text="${post.comments.size()}">0</span>
             </div>
 
             <div>
-            <img id="share" src="images/share-light.png" alt="Share"/>
+            <img id="share" src="/images/share-light.png" alt="Share"/>
             <span id="shares-quantity" th:text="${post.shares.size()}">0</span>
-            </div>
+            </div>-->
         </div>
     </form>
 </div>
 
-    <script src="js/theme.js"></script>
-    <script src="js/post.js"></script>
+    <script src="/js/theme.js"></script>
+    <script src="/js/post.js"></script>
 </body>
 </html>

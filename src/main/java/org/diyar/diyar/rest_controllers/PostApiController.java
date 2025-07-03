@@ -1,8 +1,10 @@
 package org.diyar.diyar.rest_controllers;
 
+import org.diyar.diyar.entities.Comment;
 import org.diyar.diyar.entities.Like;
 import org.diyar.diyar.entities.Post;
 import org.diyar.diyar.entities.User;
+import org.diyar.diyar.services.CommentService;
 import org.diyar.diyar.services.LikeService;
 import org.diyar.diyar.services.PostService;
 import org.springframework.http.HttpStatus;
@@ -19,10 +21,12 @@ public class PostApiController {
 
     private final PostService postService;
     private final LikeService likeService;
+    private final CommentService commentService;
 
-    public PostApiController(PostService postService, LikeService likeService) {
+    public PostApiController(PostService postService, LikeService likeService, CommentService commentService) {
         this.postService = postService;
         this.likeService = likeService;
+        this.commentService = commentService;
     }
 
     @GetMapping
@@ -52,12 +56,12 @@ public class PostApiController {
 
         Post post = optionalPost.get();
 
-        if (likeService.isLikeExistsByUserAndPost(user, post)) {
+        if (likeService.isLikeExistsByAuthorAndPost(user, post)) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Already Liked By You");
         }
 
         Like like = new Like();
-        like.setUser(user);
+        like.setAuthor(user);
         like.setPost(post);
 
         likeService.likePost(like);

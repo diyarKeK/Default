@@ -1,5 +1,6 @@
 package org.diyar.diyar.controllers;
 
+import jakarta.transaction.Transactional;
 import org.diyar.diyar.entities.Post;
 import org.diyar.diyar.services.PostService;
 import org.springframework.stereotype.Controller;
@@ -25,6 +26,7 @@ public class PostController {
         return "posts";
     }
 
+    @Transactional
     @GetMapping("/{id}")
     public String viewPost(@PathVariable Long id, Model model) {
         Optional<Post> optionalPost = postService.findById(id);
