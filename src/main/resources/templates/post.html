@@ -20,20 +20,24 @@
         <p id="content" th:text="${post.content}">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dolore quia expedita vero! Dicta, necessitatibus nesciunt aperiam culpa sunt natus non, fugit atque numquam voluptatum ipsam quos. Dignissimos amet quam laudantium? Lorem ipsum dolor sit amet consectetur adipisicing elit. Non ea totam explicabo temporibus et unde sed assumenda vero, sequi tempora debitis aliquid deserunt veritatis facilis fuga delectus cum earum quae? Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempora, suscipit quia! Neque asperiores recusandae voluptate natus commodi similique blanditiis eos optio dolores qui quis praesentium itaque expedita quaerat, magni nulla! Lorem, ipsum dolor sit amet consectetur adipisicing elit. Placeat temporibus ipsam totam officiis. Quod maiores aspernatur cumque nulla rerum nobis libero voluptatum repellat, corporis dignissimos laudantium explicabo delectus. Quis, obcaecati. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quaerat molestias vero temporibus! Eaque, animi quisquam, fuga minima, unde accusamus ipsam nulla ipsa suscipit quasi iure. Dignissimos enim sed provident iure.</p>
 
         <div class="bar">
+            <div class="author">
+            <span id="name" th:text="${post.author.name}"></span>
+            </div>
+
             <div>
             <img id="like" src="/images/like-light.png" alt="Like"/>
-            <span id="likes-quantity" th:text="${post.likes.size()}">0</span>
-            </div>
-
-            <!--<div>
-            <img id="comment" src="/images/comment-light.png" alt="Comment"/>
-            <span id="comments-quantity" th:text="${post.comments.size()}">0</span>
+            <span id="likes-quantity" th:text="${post.likes.size()}"></span>
             </div>
 
             <div>
+            <img id="comment" src="/images/comment-light.png" alt="Comment"/>
+            <span id="comments-quantity" th:text="${post.comments.size()}"></span>
+            </div>
+
+            <!--div>
             <img id="share" src="/images/share-light.png" alt="Share"/>
             <span id="shares-quantity" th:text="${post.shares.size()}">0</span>
-            </div>-->
+            </div-->
         </div>
     </form>
 </div>

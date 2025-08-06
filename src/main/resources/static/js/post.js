@@ -5,18 +5,42 @@ document.addEventListener('DOMContentLoaded', async () => {
             credentials: 'include'  
         })
 
-        if (!response.ok) {
+        /*if (!response.ok) {
             window.location.href = '/login'
             return
+        }*/
+    } catch (err) {
+        console.log(err.message)
+    }
+})
+
+const postId = window.location.pathname.split("/").pop()
+const like = document.getElementById('like')
+const comment = document.getElementById('comment')
+const share = document.getElementById('share')
+
+like.addEventListener('click', async () => {
+    try {
+        const response = await fetch(`/api/post/${postId}/like`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: {},
+            credentials: 'include'
+        })
+
+        if (!response.ok) {
+            alert(response.text())
         }
     } catch (err) {
         console.log(err.message)
     }
 })
 
-const like = document.getElementById('like')
-const comment = document.getElementById('comment')
-const share = document.getElementById('share')
+comment.addEventListener('click', async () => {
+    
+})
 
 document.getElementById('light-theme').addEventListener('click', () => {
     like.src = '/images/like-light.png'

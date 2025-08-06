@@ -1,4 +1,4 @@
-package org.diyar.diyar.services;
+package org.diyar.diyar.services.post_services;
 
 import org.diyar.diyar.entities.Like;
 import org.diyar.diyar.entities.Post;

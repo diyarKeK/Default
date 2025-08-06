@@ -2,7 +2,7 @@ package org.diyar.diyar.controllers;
 
 import jakarta.transaction.Transactional;
 import org.diyar.diyar.entities.Post;
-import org.diyar.diyar.services.PostService;
+import org.diyar.diyar.services.post_services.PostService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,19 +12,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import java.util.Optional;
 
 @Controller
-@RequestMapping("/posts")
+@RequestMapping("/post")
 public class PostController {
 
     private final PostService postService;
 
-    public PostController(PostService postService) {
-        this.postService = postService;
-    }
-
-    @GetMapping
-    public String posts(Model model) {
-        return "posts";
-    }
+    public PostController(PostService postService) { this.postService = postService; }
 
     @Transactional
     @GetMapping("/{id}")

@@ -1,9 +1,6 @@
-package org.diyar.diyar.services;
+package org.diyar.diyar.services.post_services;
 
-import org.diyar.diyar.entities.Like;
 import org.diyar.diyar.entities.Post;
-import org.diyar.diyar.entities.User;
-import org.diyar.diyar.repositories.LikeRepository;
 import org.diyar.diyar.repositories.PostRepository;
 import org.springframework.stereotype.Service;
 
@@ -19,15 +16,13 @@ public class PostService {
         this.postRepository = postRepository;
     }
 
-    public List<Post> getAllPosts() {
-        return postRepository.findAll();
-    }
-
     public Post createPost(Post post) {
         return postRepository.save(post);
     }
 
-    public Optional<Post> findById(Long id) {
-        return postRepository.findById(id);
+    public List<Post> getAllPosts() {
+        return postRepository.findAll();
     }
+
+    public Optional<Post> findById(Long id) { return postRepository.findById(id); }
 }

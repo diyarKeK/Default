@@ -2,7 +2,7 @@ package org.diyar.diyar.entities;
 
 public class AuthenticationResponse {
 
-    private String token;
+    private final String token;
 
     public AuthenticationResponse(String token) {
         this.token = token;

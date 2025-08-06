@@ -4,9 +4,9 @@ import org.diyar.diyar.entities.Comment;
 import org.diyar.diyar.entities.Like;
 import org.diyar.diyar.entities.Post;
 import org.diyar.diyar.entities.User;
-import org.diyar.diyar.services.CommentService;
-import org.diyar.diyar.services.LikeService;
-import org.diyar.diyar.services.PostService;
+import org.diyar.diyar.services.post_services.CommentService;
+import org.diyar.diyar.services.post_services.LikeService;
+import org.diyar.diyar.services.post_services.PostService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
@@ -16,7 +16,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/api/posts")
+@RequestMapping("/api/post")
 public class PostApiController {
 
     private final PostService postService;
@@ -43,10 +43,6 @@ public class PostApiController {
 
     @PostMapping("/{id}/like")
     public ResponseEntity<?> likePost(@PathVariable Long id, Authentication authentication) {
-        if (authentication == null || !authentication.isAuthenticated()) {
-            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Unauthorized");
-        }
-
         User user = (User) authentication.getPrincipal();
         Optional<Post> optionalPost = postService.findById(id);
 
@@ -64,9 +60,24 @@ public class PostApiController {
         like.setAuthor(user);
         like.setPost(post);
 
-        likeService.likePost(like);
+        return ResponseEntity.ok(likeService.likePost(like));
+    }
 
-        return ResponseEntity.ok("Post liked");
+    @PostMapping("/{id}/comment")
+    public ResponseEntity<?> commentPost(@PathVariable Long id, @RequestBody Comment comment, Authentication authentication) {
+        User user = (User) authentication.getPrincipal();
+        Optional<Post> optionalPost = postService.findById(id);
+
+        if (optionalPost.isEmpty()) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("404 - Post is not found");
+        }
+
+        Post post = optionalPost.get();
+
+        comment.setAuthor(user);
+        comment.setPost(post);
+
+        return ResponseEntity.ok(commentService.commentPost(comment));
     }
 }
 
